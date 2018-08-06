@@ -3,20 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "storybook": "start-storybook -p 9001 -c .storybook",
     "serve": "vue-cli-service serve",
     "build": "npm run build:lib",
+    "lint": "vue-cli-service lint",
     "build:default": "vue-cli-service build",
     "build:lib": "vue-cli-service build --target lib src/index.js",
-    "lint": "vue-cli-service lint",
     "test:unit": "vue-cli-service test:unit",
     "test:e2e": "vue-cli-service test:e2e"
   },
-  "main": "dist/VueHelperInterfaces.common.js",
-  "module": "dist/VueHelperInterfaces.umd.js",
-  "unpkg": "dist/VueHelperInterfaces.umd.js",
-  "files": [
-    "dist"
-  ],
   "dependencies": {
     "vue": "^2.5.16",
     "vue-router": "^3.0.1",
@@ -24,6 +19,7 @@
     "vuex": "^3.0.1"
   },
   "devDependencies": {
+    "@storybook/vue": "^3.4.10",
     "@vue/cli-plugin-babel": "^3.0.0-rc.10",
     "@vue/cli-plugin-e2e-nightwatch": "^3.0.0-rc.10",
     "@vue/cli-plugin-eslint": "^3.0.0-rc.10",
@@ -47,7 +43,6 @@
       "plugin:vue/base",
       "@vue/standard"
     ],
-    "rules": {},
     "parserOptions": {
       "parser": "babel-eslint"
     }
@@ -61,5 +56,11 @@
     "> 1%",
     "last 2 versions",
     "not ie <= 8"
-  ]
+  ],
+  "files": [
+    "dist"
+  ],
+  "module": "dist/VueHelperInterfaces.umd.js",
+  "main": "dist/VueHelperInterfaces.common.js",
+  "unpkg": "dist/VueHelperInterfaces.umd.js"
 }

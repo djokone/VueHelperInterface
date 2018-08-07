@@ -1,20 +1,26 @@
-import { configure } from '@storybook/vue';
+import { configure, storiesOf } from '@storybook/vue';
+import { setDefaults } from 'storybook-addon-vue-info'
 
-import Vue from 'vue';
-import Vuex from 'vuex'; // Vue plugins
+// setDefaults({
+//   header: false
+// })
 
 // Import your custom components.
 import HelperInput from '../src/components/HelperInput.vue';
 
 // Install Vue plugins.
-Vue.use(Vuex);
+// Vue.use(Vuex);
 
 // Register custom components.
-Vue.component('HelperInput', HelperInput);
+// Vue.component('HelperInput', HelperInput);
+
+const req = require.context('../src/stories', true, /.stories.js$/);
 
 function loadStories() {
   // You can require as many stories as you need.
-  require('../src/stories');
+  req.keys().forEach((filename) => {
+    req(filename)
+  });
 }
 
 configure(loadStories, module);

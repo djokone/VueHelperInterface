@@ -1,12 +1,35 @@
 import Vue from 'vue';
 
-import { storiesOf } from '@storybook/vue';
+import { storiesOf } from '@storybook/vue'
+import VueInfoAddon, { withInfo } from 'storybook-addon-vue-info'
+import { action } from '@storybook/addon-actions'
+// import { action } from '@storybook/addon-knobs'
 
-import HelperInput from './HelperInput.vue';
+import HelperInput from '../components/HelperInput.vue';
 
-storiesOf('HelperInput', module)
-  .add('story as a template', () => '<HelperInput :name="'test'">story as a function template</HelperInput>')
-  .add('story as a component', () => ({
+storiesOf('Vue Input Helper', module)
+  // .addDecorator(withKnobs)
+  // .addDecorator(VueInfoAddon)
+  .add(
+    'Show a text input',
+    withInfo({
+      summary: 'This summary is set by options.summary !!',
+      propTables: [HelperInput]
+    })(() => ({
     components: { HelperInput },
-    template: '<HelperInput :rounded="true">rounded</my-button>'
-  }));
+    template: '<HelperInput :name="\'test\'" @change="action(\'coucou\')"></HelperInput>',
+    propsDescription: {
+      // These description will appear in `description` column in props table
+      name: 'Name of you\'re output value',
+      options: 'Whether component is visible or not'
+    }
+  })))
+  .add(
+    'Show a select with options input',
+    withInfo({
+
+    })(() => {
+      components: {  }
+    })
+  )
+;

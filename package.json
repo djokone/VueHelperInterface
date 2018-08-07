@@ -19,6 +19,10 @@
     "vuex": "^3.0.1"
   },
   "devDependencies": {
+    "@storybook/addon-actions": "^3.4.10",
+    "@storybook/addon-knobs": "^3.4.10",
+    "@storybook/addon-links": "^3.4.10",
+    "@storybook/addon-notes": "^3.4.10",
     "@storybook/vue": "^3.4.10",
     "@vue/cli-plugin-babel": "^3.0.0-rc.10",
     "@vue/cli-plugin-e2e-nightwatch": "^3.0.0-rc.10",
@@ -27,9 +31,12 @@
     "@vue/cli-service": "^3.0.0-rc.10",
     "@vue/eslint-config-standard": "^3.0.0-rc.10",
     "@vue/test-utils": "^1.0.0-beta.20",
+    "babel-core": "^6.26.3",
     "chai": "^4.1.2",
     "node-sass": "^4.9.0",
     "sass-loader": "^7.0.1",
+    "storybook-addon-vue-info": "^0.6.0",
+    "vue-storybook": "^0.4.0",
     "vue-template-compiler": "^2.5.16",
     "webpack": "^4.16.4"
   },

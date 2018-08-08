@@ -12,6 +12,7 @@ const req = require.context('./', true, /\.vue$/)
 // console.log(req.keys())
 function loadStories() {
   req.keys().forEach((filename) => {
+    // console.log(req(filename))
     registerStories(req, filename, storiesOf, {withKnobs, withNotes, action, text})
   })
 }

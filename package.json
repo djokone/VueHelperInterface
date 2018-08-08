@@ -9,7 +9,7 @@
     "lint": "vue-cli-service lint",
     "build:default": "vue-cli-service build",
     "build:lib": "vue-cli-service build --target lib src/index.js",
-    "test:unit": "vue-cli-service test:unit",
+    "test:unit": "vue-cli-service test:unit -w",
     "test:e2e": "vue-cli-service test:e2e"
   },
   "dependencies": {

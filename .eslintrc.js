@@ -8,7 +8,8 @@ module.exports = {
     // 'plugin:vue/strongly-recommended'
     // 'plugin:vue/essential',
     'plugin:vue/base',
-    '@vue/standard'
+    '@vue/standard',
+    'plugin:vue-types/strongly-recommended'
   ],
   "parserOptions": {
     "parser": "babel-eslint",

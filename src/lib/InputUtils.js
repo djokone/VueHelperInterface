@@ -2,6 +2,13 @@
 import conditionalArray from './conditionalArray'
 import { forEach } from 'lodash'
 
+/**
+ *
+ * @param obj
+ * @param create
+ * @param children
+ * @returns {*}
+ */
 let inputDispatcher = function (obj, create, children) {
   let vnodeArray = []
   vnodeArray.push(createLabel(obj, create))
@@ -16,9 +23,15 @@ let inputDispatcher = function (obj, create, children) {
   }
   return createInputContainer(obj, create, vnodeArray)
 }
+
+/**
+ *
+ * @param obj
+ * @returns {{}}
+ */
 let dispatchProperties = function (obj) {
   let attrs = {
-    id: obj.name + '_' + obj.primary,
+    id: obj.name + '_' + obj._uid,
     type: obj.type,
     placeholder: obj.placeholder,
     name: obj.name
@@ -31,7 +44,6 @@ let dispatchProperties = function (obj) {
   let on = {
     input: function (event) {
       // obj.localData = event.target.value
-      // console.log(event.target.value)
       obj.upLocal(event.target.value)
       obj.$emit('input', obj.name, event.target.value)
     }
@@ -66,11 +78,12 @@ let createCustomComponent = function (obj, create) {
   //   init: obj.value
   // })
 }
+
 let createLabel = function (obj, create) {
   return create('label',
     {
       attrs: {
-        for: obj.name + '_' + obj.primary
+        for: obj.name + '_' + obj._uid
       },
       domProps: {
         innerHTML: obj.label

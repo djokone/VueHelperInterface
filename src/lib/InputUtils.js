@@ -12,9 +12,7 @@ import { forEach } from 'lodash'
 let inputDispatcher = function (obj, create, children) {
   let vnodeArray = []
   vnodeArray.push(createLabel(obj, create))
-  // console.log(obj.component)
   if (obj.component) {
-    // console.log('component')
     vnodeArray.push(createCustomComponent(obj, create))
   } else if (obj.options) {
     vnodeArray.push(createSelect(obj, create))

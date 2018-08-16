@@ -4,6 +4,7 @@ export default class Helper {
   constructor (config = { verbose: true }) {
     this._config = false
     this._mounted = false
+    this._wrap = false
     this.config = config
     this._builder = false
     this._vm = false
@@ -22,6 +23,14 @@ export default class Helper {
     }
   }
 
+  get wrap () {
+    return this._wrap
+  }
+
+  set wrap (val) {
+    this._wrap = val
+  }
+
   set config (val) {
     if (this._config) {
       this._config = {...this._config, ...val}
@@ -30,6 +39,10 @@ export default class Helper {
     }
   }
 
+  /**
+   * Config getter
+   * @returns {boolean|{}|*}
+   */
   get config () {
     return this._config
   }
@@ -79,12 +92,25 @@ export default class Helper {
   }
   build () {
     let instance = this.vm
+    let components = []
+    let build
     if (instance) {
-      return this.builder(
+      let component = this.builder(
         this.tag,
         {...this.properties},
         this.childrens
       )
+      components.push(this.builder(
+        this.tag,
+        {...this.properties},
+        this.childrens
+      ))
+      if (this.wrap !== false) {
+        build = this.builder(this.wrap.tag, {...this.wrap.options}, components)
+      } else {
+        build = component
+      }
+      return build
     } else {
       return false
     }
@@ -112,6 +138,5 @@ export default class Helper {
   }
 
   dipatchProperties () {
-
   }
 }

@@ -7,14 +7,16 @@ export default class Input extends Helper {
   constructor () {
     super()
     this._tag = 'input'
-    this._Label = {}
+    this._label = {}
     this._directives = []
     this.on = {
       input: this.onInput
     }
   }
   afterMount (builder, vm) {
-    this._Label = new Label().mount(builder, vm)
+    this._label = new Label().mount(builder, vm)
+    this.wrap = this.vm.wrap
+    console.log(this.wrap)
   }
   onInput () {
   }
